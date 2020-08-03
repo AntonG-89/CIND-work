@@ -1,0 +1,115 @@
+---
+title: "study_session 2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Textbook question 6.64 solution
+Restaurant Sales The daily sales total (excepting Saturday) at a small restaurant has a probability
+distribution that is approximately normal, with a mean m equal to $1230 per day and a standard deviation equal to $120.
+a. What is the probability that the sales will exceed $1400 for a given day?
+
+```{r}
+pnorm(1400, mean = 1230, sd = 120, lower.tail = FALSE)
+
+```
+The probability is 0.08%. We used "lower.tail= FALSE" argument here, but you could just as well do 1 - pnorm instead.
+```{r}
+1 - pnorm(1400, mean = 1230, sd = 120)
+```
+b. The restaurant must have at least $1000 in sales per day to break even. What is the probability that
+on a given day the restaurant will not break even?
+
+```{r}
+pnorm(1000, mean = 1230, sd = 120)
+```
+Probability of 0.03%. 
+
+Textbook question 6.76 solution
+A cross between two peony plants-one with red petals and one with streaky petals-produced offspring plants
+with red petals 75% of the time. Suppose that 100 seeds from this cross were collected and germinated,
+and x, the number of plants with red petals, was recorded.
+a. What is the exact probability distribution for x?
+```{r}
+barplot(dbinom(0:100, size=100, prob=0.75))
+```
+This is a binomial distribution, since we have 2 outcomes, red petals and streaky petals.
+
+b. Is it appropriate to approximate the distribution in
+part a using the normal distribution? Explain.
+
+Yes, we can see that above pretty clearly. Additionally, we can test whether a normal distribution may be used to approximate the binomial distribution.
+If np >= 5 and nq >= 5,where q = 1 - p, normal distribution can be used. Here we have 49*0.75 = 36.75 and 49 * 0.25 = 12.25.
+
+c. Use an appropriate method to find the approximate
+probability that between 70 and 80 (inclusive) offspring
+plants have red flowers.
+
+
+```{r}
+prob.1 <- pbinom(69, size = 100, prob = 0.75)
+prob.2 <- pbinom(80, size = 100, prob = 0.75)
+prob.2 - prob.1
+```
+
+We can also calculate that using a normal distribution. We need to find the mean and standard deviation:
+mean = np
+sqrt(m*q), where q = 1 - p
+
+```{r}
+m <- 100*0.75
+s.t.d. <- sqrt(m * 0.25)
+n.prob.1 <- pnorm(69, m, s.t.d.)
+n.prob.2 <- pnorm(80, m, s.t.d.)
+n.prob.2 - n.prob.1
+```
+
+We can see that while different, the probability we get from binomail distribution and from normal distribution are almost identical.
+
+
+d. What is the probability that 53 or fewer offspring
+plants had red flowers? Is this an unusual occurrence?
+```{r}
+prob.3 <- pbinom(53, size = 100, prob = 0.75)
+prob.3
+```
+This is very unusual, if we are to believe this number.My guess is "no chance in Hell" is the answer here.
+
+e. If you actually observed 53 of 100 offspring plants
+with red flowers, and if you were certain that the
+genetic ratio 3:1 was correct, what other explanation
+could you give for this unusual occurrence?
+
+During discussion we decided that is you are confident that both 53 out fo 100 and 0.75% probability are true, than there must be an uknown independent variable which affects our sample.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
