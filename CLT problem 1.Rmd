@@ -17,6 +17,16 @@ n = 49 boxes
 mean = 205
 sd = 15
 
+Let Xn be the variable representing the weight of each of the boxes 
+Xn  ∼  ( µ = 205, σ = 15) 
+n=49/ maxload=9800
+Since n>30 and according to the CLT: ∑Xn  ∼ N(nµ, σ√n), that is ∑Xn  ∼ N(10045,105)
+The probability that all 49 boxes will be loaded is the probability that ∑Xn < 9800 
+i.e
+p(∑Xn<9800)=p(z<(9800-10045)/105)
+           =p(z<-2.33)
+           =0.0099
+
 We can find a solution by using z-score. Using above notations:
 z = (Max.weight - n * (mean))/(sqrt(n) * sd)
 ```{r}
