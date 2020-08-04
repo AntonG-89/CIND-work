@@ -27,8 +27,6 @@ p(∑Xn<9800)=p(z<(9800-10045)/105)
            =p(z<-2.33)
            =0.0099
 
-We can find a solution by using z-score. Using above notations:
-z = (Max.weight - n * (mean))/(sqrt(n) * sd)
 ```{r}
 z.sc <- (9800 - 49* (205))/(sqrt(49)* 15)
 z.sc
