@@ -6,7 +6,6 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
 A large freight elevator can transport a maximum of 9800 pounds. Suppose a load of cargo containing 49 boxes must be
 transported via the elevator. Experience has shown that the weight of boxes of this type of cargo follows a distribution with
 mean µ = 205 pounds and standard deviation σ = 15 pounds. Based on this information, what is the probability that all 49
